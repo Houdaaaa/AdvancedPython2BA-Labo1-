@@ -5,20 +5,20 @@
 import unittest
 import utils
 
-class TestUtils(unittest.TestCase):
+class TestUtils(unittest.TestCase):  # comm inutile
     def test_fact(self):
-        self.assertEqual(utils.fact(0),1)
-        self.assertEqual(utils.fact(3),6)
-        pass
-    
-    def test_roots(self):
-        self.assertEqual(utils.roots(2,5,3),(-2,-3))
+        self.assertEqual(utils.fact(0), 1)
+        self.assertEqual(utils.fact(3), 6)
+        with self.assertRaises(ValueError):
+            utils.fact(-1)
 
-        pass
-    
+    def test_roots(self):
+        self.assertEqual(utils.roots(1, 2, 3), tuple())
+        self.assertEqual(utils.roost(1, 2, 1), (-1))
+        self.assertEqual(utils.roost(1, 2, 1), (-2, -1))
+
     def test_integrate(self):
-        self.assertEqual((5,0,2),10)
-        pass
+        self.assertEqual(utils.integrate('x ** 2 - 1', -1, 1), -4 / 3)
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestUtils)
