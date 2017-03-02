@@ -1,7 +1,7 @@
 # Math library
 # Author: Sébastien Combéfis
 # Version: February 2, 2016
-
+import math
 def fact(n):
     """Computes the factorial of a natural number.
     
@@ -13,13 +13,13 @@ def fact(n):
     try:
 
       if n== 0 or n==1:
-        return 1
+          return 1
 
       elif n>1:
-        return n * fact(n - 1)
+          return n * fact(n - 1)
 
       else:
-         return print("Veuillez entrer un nombre entier positif")
+          return print("Veuillez entrer un nombre entier positif")
 
     except:
         return print("Veuillez entrer un nombre correct")
@@ -34,13 +34,16 @@ def roots(a, b, c):
     """
     try:
         delta = (b ** 2) - (4 * a * c)
+        if delta >=0:
 
-        x1 = ((-b) + math.sqrt(delta)) / (2 * a)
-        x2 = ((-b) - math.sqrt(delta)) / (2 * a)
+            x1 = ((-b) + math.sqrt(delta)) / (2 * a)
+            x2 = ((-b) - math.sqrt(delta)) / (2 * a)
 
-        return (x1, x2)
+            return (x1, x2)
+        else:
+            return "Ce polynôme n'a pas de racines"
     except:
-        return "Ce polynôme n'a pas de racines"  # quand delta<0 et quand a=0
+        return "Ce polynôme n'a pas de racines"  # quand a=0
 
 def integrate(function, lower, upper):
     """Approximates the integral of a fonction between two bounds
